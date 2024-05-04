@@ -3,6 +3,8 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -48,34 +50,37 @@ public class Main {
 
             Integer opcao;
 
+
+            Integer contadorRegistros = 1;
             while (true) {
                 System.out.println("""
                     .-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.
-                    |                                                                       |
-                    |                                                                       |
-                    |                                                                       |
                     |                                                                       |
                     |           Opções:                                                     |
                     |           Pressione 1 para verificar os dados na máquina              |
                     |           Pressione 2 para sair                                       |
                     !                                                                       !
-                    :                                                                       :
-                    :                                                                       :
-                    :                                                                       :
                     `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-' 
                     """);
                 opcao = input.nextInt();
 
                 if (opcao == 1){
+                    LocalDateTime dataHorario = LocalDateTime.now();
+                    DateTimeFormatter formatadorDataHora =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                     System.out.println("""
-                            
-                            
+                            Registro %d
+                            Data e horario: %s
+                            """.formatted(contadorRegistros, formatadorDataHora.format(dataHorario)));
+
+                    System.out.println("""                            
                             -----------------------------------------
                             INFORMAÇÕES DO DISCO:
                             Quantidade de discos: %d
+                            Gigabytes de leitura: %s
+                            Gigabytes de escrita: %s
                             Capacidade total dos discos: %s
                             -----------------------------------------
-                            """.formatted(discoCollector.getQuantidadeDeDiscos(), discoCollector.getTamanhoTotalDiscosEmGigabyte()));
+                            """.formatted(discoCollector.getQuantidadeDeDiscos(), discoCollector.getGigabytesLeitura(), discoCollector.getGigabytesEscrita(), discoCollector.getTamanhoTotalDiscosEmGigabyte()));
 
 
                     System.out.println("""
@@ -90,11 +95,13 @@ public class Main {
                     System.out.println("""
                             -----------------------------------------
                             INFORMAÇÕES DO PROCESSADOR:
-                            Processador em uso: %.2f
+                            Numero de CPUs físicas: %d
+                            Numero de CPUs logicas: %d
                             Frequência: %.2f GHz
+                            Porcentagem em uso: %.2f%%
                             Nome: %s
                             -----------------------------------------
-                            """.formatted(cpuCollector.getProcessadorEmUso(), cpuCollector.getFrequenciaProcessador(), cpuCollector.getNomeProcessador()));
+                            """.formatted(cpuCollector.getQtdCpusFisicas(),  cpuCollector.getQtdCpusLogicas(), cpuCollector.getFrequenciaProcessador(), cpuCollector.getProcessadorEmUso(), cpuCollector.getNomeProcessador()));
 
                     System.out.println("""
                             -----------------------------------------
@@ -103,13 +110,14 @@ public class Main {
                             Dispositivos conectados: %s 
                             -----------------------------------------
                             """.formatted(usbCollector.getQuantidadeUsbConectados(), usbCollector.getNomeDosDispositivos()));
+                    contadorRegistros++;
                 } else if (opcao == 2) {
                     System.out.println("Até logo!!");
                     break;
                 } else {
                     System.out.println("Insira um número válido\n");
                 }
-            } ;
+            }
          }
 
 
