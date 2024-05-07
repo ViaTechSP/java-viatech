@@ -90,7 +90,7 @@ public class Main {
                             Memória RAM total: %s
                             Memória RAM disponível: %s
                             -----------------------------------------
-                            """.formatted(ramCollector.getMemoriaEmUsoEmGigabytes(), ramCollector.getMemoriaTotalEmGigabytes(), ramCollector.getMemoriaDisponivelEmGigabytes()));
+                            """.formatted(ramCollector.getMemoriaUtilizada(), ramCollector.getMemoriaTotal(), ramCollector.getDisponivel()));
 
                     System.out.println("""
                             -----------------------------------------
@@ -111,6 +111,12 @@ public class Main {
                             -----------------------------------------
                             """.formatted(usbCollector.getQuantidadeUsbConectados(), usbCollector.getNomeDosDispositivos()));
                     contadorRegistros++;
+
+                    try {
+                        RamColeta.coletaDeRam();
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else if (opcao == 2) {
                     System.out.println("Até logo!!");
                     break;

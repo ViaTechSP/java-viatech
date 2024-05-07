@@ -7,16 +7,40 @@ import com.github.britooo.looca.api.util.Conversor;
 public class RamCollector {
     Looca looca = new Looca();
 
-    public String getMemoriaTotalEmGigabytes () {
-        return Conversor.formatarBytes(looca.getMemoria().getTotal());
+    private String disponivel;
+    private String memoriaTotal;
+    private String memoriaUtilizada;
+
+    public String getDisponivel() {
+        return   disponivel = Conversor.formatarBytes(looca.getMemoria().getDisponivel());
     }
 
-    public String getMemoriaEmUsoEmGigabytes(){
-        return Conversor.formatarBytes(looca.getMemoria().getEmUso());
+    public void setDisponivel(String disponivel) {
+        this.disponivel = disponivel;
     }
 
-    public String getMemoriaDisponivelEmGigabytes(){
-        return Conversor.formatarBytes(looca.getMemoria().getDisponivel());
+    public String getMemoriaTotal() {
+        return memoriaTotal = Conversor.formatarBytes(looca.getMemoria().getTotal());
     }
 
-}
+    public void setMemoriaTotal(String memoriaTotal) {
+        this.memoriaTotal = memoriaTotal;
+    }
+
+    public String getMemoriaUtilizada() {
+        return memoriaUtilizada = Conversor.formatarBytes(looca.getMemoria().getEmUso());
+    }
+
+    public void setMemoriaUtilizada(String memoriaUtilizada) {
+        this.memoriaUtilizada = memoriaUtilizada;
+    }
+
+
+    }
+
+
+
+
+
+
+
