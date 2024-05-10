@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class BancoConexao {
 
-    private static final String url = "jdbc:mysql://localhost:3306/projeto";
+    private static final String url = "jdbc:mysql://localhost:3306/grupo";
 
     private static final String user = "root";
     private static final String password = "Renan12.";

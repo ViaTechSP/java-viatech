@@ -6,6 +6,8 @@ import com.github.britooo.looca.api.group.sistema.Sistema;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
@@ -65,8 +67,18 @@ public class Main {
                 opcao = input.nextInt();
 
                 if (opcao == 1){
+                    Timer timer = new Timer();
                     LocalDateTime dataHorario = LocalDateTime.now();
-                    DateTimeFormatter formatadorDataHora =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    TimerTask tarefa = new TimerTask(){
+                       Integer contagem = 0;
+                        public void run() {
+                            contagem++;
+
+                            System.out.println("""
+                                    Coletando... %d
+                                    """.formatted(contagem));
+
+                            DateTimeFormatter formatadorDataHora =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                     System.out.println("""
                             Registro %d
                             Data e horario: %s
@@ -75,12 +87,12 @@ public class Main {
                     System.out.println("""                            
                             -----------------------------------------
                             INFORMAÇÕES DO DISCO:
-                            Quantidade de discos: %d
+                            Quantidade de discos: %s
                             Gigabytes de leitura: %s
                             Gigabytes de escrita: %s
                             Capacidade total dos discos: %s
                             -----------------------------------------
-                            """.formatted(discoCollector.getQuantidadeDeDiscos(), discoCollector.getGigabytesLeitura(), discoCollector.getGigabytesEscrita(), discoCollector.getTamanhoTotalDiscosEmGigabyte()));
+                            """.formatted(discoCollector.getQuantidadeDisco(), discoCollector.getGigabytesLeituras(), discoCollector.getGigabytesEscritas(), discoCollector.getTotalGigabytesDisco()));
 
 
                     System.out.println("""
@@ -95,28 +107,41 @@ public class Main {
                     System.out.println("""
                             -----------------------------------------
                             INFORMAÇÕES DO PROCESSADOR:
-                            Numero de CPUs físicas: %d
-                            Numero de CPUs logicas: %d
-                            Frequência: %.2f GHz
-                            Porcentagem em uso: %.2f%%
+                            Numero de CPUs físicas: %s
+                            Numero de CPUs logicas: %s
+                            Frequência: %s GHz
                             Nome: %s
                             -----------------------------------------
-                            """.formatted(cpuCollector.getQtdCpusFisicas(),  cpuCollector.getQtdCpusLogicas(), cpuCollector.getFrequenciaProcessador(), cpuCollector.getProcessadorEmUso(), cpuCollector.getNomeProcessador()));
+                            """.formatted(cpuCollector.getCpuFisica(),  cpuCollector.getCpuLogica(), cpuCollector.getFrequencia(), cpuCollector.getNomeCpu()));
 
                     System.out.println("""
                             -----------------------------------------
                             INFORMAÇÕES USB:
-                            Quantidade dispositivos conectados: %d
+                            Quantidade dispositivos conectados: %s
                             Dispositivos conectados: %s 
                             -----------------------------------------
                             """.formatted(usbCollector.getQuantidadeUsbConectados(), usbCollector.getNomeDosDispositivos()));
-                    contadorRegistros++;
 
+
+                    DiscoColeta.coletarDadosDisco();
                     try {
                         RamColeta.coletaDeRam();
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
+                    try {
+                        CpuColeta.coletaDeProcessador();
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        UsbColeta.coletaDeUsb();
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                        }
+                    };
+                    timer.scheduleAtFixedRate(tarefa, 200, 5000L);
                 } else if (opcao == 2) {
                     System.out.println("Até logo!!");
                     break;

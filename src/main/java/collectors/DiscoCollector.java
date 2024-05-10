@@ -4,21 +4,46 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.util.Conversor;
 
 public class DiscoCollector  {
-    private Looca looca = new Looca();
+     Looca looca = new Looca();
 
-    public Integer getQuantidadeDeDiscos(){
-        return looca.getGrupoDeDiscos().getQuantidadeDeDiscos();
+     private String quantidadeDisco;
+     private String gigabytesLeituras;
+     private String gigabytesEscritas;
+     private String totalGigabytesDisco;
+
+
+    public String getQuantidadeDisco() {
+        return this.quantidadeDisco = String.valueOf((looca.getGrupoDeDiscos().getQuantidadeDeDiscos()));
     }
 
-    public String getGigabytesLeitura() {
-        return Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura());
+    public void setQuantidadeDisco(String quantidadeDisco) {
+        this.quantidadeDisco = quantidadeDisco;
     }
 
-    public String getGigabytesEscrita() {
-        return Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas());
+
+    public String getGigabytesLeituras() {
+        return gigabytesLeituras = Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura());
     }
-    public String getTamanhoTotalDiscosEmGigabyte(){
-        return Conversor.formatarBytes(looca.getGrupoDeDiscos().getTamanhoTotal());
+
+    public void setGigabytesLeituras(String gigabytesLeituras) {
+        this.gigabytesLeituras = gigabytesLeituras;
     }
+
+    public String getGigabytesEscritas() {
+        return gigabytesEscritas = Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas());
+    }
+
+    public void setGigabytesEscritas(String gigabytesEscritas) {
+        this.gigabytesEscritas = gigabytesEscritas;
+    }
+
+    public String getTotalGigabytesDisco() {
+        return totalGigabytesDisco = Conversor.formatarBytes(looca.getGrupoDeDiscos().getTamanhoTotal());
+    }
+
+    public void setTotalGigabytesDisco(String totalGigabytesDisco) {
+        this.totalGigabytesDisco = totalGigabytesDisco;
+    }
+
 
 }
