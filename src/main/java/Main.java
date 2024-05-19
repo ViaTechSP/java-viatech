@@ -2,20 +2,29 @@ import collectors.*;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.sistema.Sistema;
+import oshi.hardware.HardwareAbstractionLayer;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class Main {
+
     public static void main(String[] args) {
+
         RamCollector ramCollector = new RamCollector();
         DiscoCollector discoCollector = new DiscoCollector();
         CpuCollector cpuCollector = new CpuCollector();
         UsbCollector usbCollector = new UsbCollector();
         TemperaturaCollector temperaturaCollector = new TemperaturaCollector();
+
+
 
 
         Scanner input = new Scanner(System.in);
@@ -47,7 +56,7 @@ public class Main {
                     ╚██╗ ██╔╝██║██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║
                      ╚████╔╝ ██║██║  ██║   ██║   ███████╗╚██████╗██║  ██║
                       ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
-                      
+
                       """);
 
             Integer opcao;
@@ -62,7 +71,7 @@ public class Main {
                     |           Pressione 1 para verificar os dados na máquina              |
                     |           Pressione 2 para sair                                       |
                     !                                                                       !
-                    `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-' 
+                    `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
                     """);
                 opcao = input.nextInt();
 
@@ -84,7 +93,7 @@ public class Main {
                             Data e horario: %s
                             """.formatted(contadorRegistros, formatadorDataHora.format(dataHorario)));
 
-                    System.out.println("""                            
+                    System.out.println("""
                             -----------------------------------------
                             INFORMAÇÕES DO DISCO:
                             Quantidade de discos: %s
@@ -118,7 +127,7 @@ public class Main {
                             -----------------------------------------
                             INFORMAÇÕES USB:
                             Quantidade dispositivos conectados: %s
-                            Dispositivos conectados: %s 
+                            Dispositivos conectados: %s
                             -----------------------------------------
                             """.formatted(usbCollector.getQuantidadeUsbConectados(), usbCollector.getNomeDosDispositivos()));
 
@@ -149,7 +158,7 @@ public class Main {
                     System.out.println("Insira um número válido\n");
                 }
             }
-         }
+        }
 
 
 
