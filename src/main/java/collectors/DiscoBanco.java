@@ -7,7 +7,9 @@ import java.sql.SQLException;
 
 public class DiscoBanco {
 
-    public void cadastrarDados(DiscoCollector Disco) {
+    public static void cadastrarDados() {
+
+        DiscoCollector Disco = new DiscoCollector();
 
         String sql = "INSERT INTO disco (quantidadeDisco, gigabytesLeitura, gigabytesEscrita, totalGigabytes) VALUES (?, ?, ?, ?)";
 

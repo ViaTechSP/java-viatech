@@ -7,7 +7,10 @@ import java.sql.SQLException;
 
 public class UsbBanco {
 
-    public void cadastrarDados(UsbCollector metodoUsb) throws ClassNotFoundException{
+    public static void cadastrarDados() throws ClassNotFoundException{
+
+
+        UsbCollector metodoUsb = new UsbCollector();
 
         String sql = "INSERT INTO usb (quantidadeUsb, dispositivoConectado) VALUES (?, ?)";
 

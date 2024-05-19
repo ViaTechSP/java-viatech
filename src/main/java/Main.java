@@ -132,19 +132,19 @@ public class Main {
                             """.formatted(usbCollector.getQuantidadeUsbConectados(), usbCollector.getNomeDosDispositivos()));
 
 
-                    DiscoColeta.coletarDadosDisco();
+                    DiscoBanco.cadastrarDados();
                     try {
-                        RamColeta.coletaDeRam();
+                        RamBanco.cadastrarDados();
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
                     try {
-                        CpuColeta.coletaDeProcessador();
+                        CpuBanco.cadastrarDados();
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
                     try {
-                        UsbColeta.coletaDeUsb();
+                        UsbBanco.cadastrarDados();
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }

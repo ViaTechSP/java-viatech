@@ -1,12 +1,16 @@
 package collectors;
 import Banco.BancoConexao;
+import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.util.Conversor;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class RamBanco {
 
-    public void cadastrarDados(RamCollector metodoRam) throws ClassNotFoundException{
+    public static void cadastrarDados() throws ClassNotFoundException {
+
+        RamCollector metodoRam = new RamCollector();
 
         String sql = "INSERT INTO ram (memoriaDisponivel, memoriaTotal, memoriaUtilizada) VALUES (?, ?, ?)";
 
@@ -23,6 +27,7 @@ public class RamBanco {
             throw new RuntimeException(e);
         }
     }
-}
 
+
+}
 

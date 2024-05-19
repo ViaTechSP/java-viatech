@@ -7,7 +7,9 @@ import java.sql.SQLException;
 
 public class CpuBanco {
 
-    public void cadastrarDados(CpuCollector processador) throws ClassNotFoundException {
+    public static void cadastrarDados() throws ClassNotFoundException {
+
+        CpuCollector processador = new CpuCollector();
 
         String sql = "INSERT INTO processador (nomeCPU, cpuFisica, cpuLogica, frequencia) VALUES (?, ?, ?, ?)";
 
