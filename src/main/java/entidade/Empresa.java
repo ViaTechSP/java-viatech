@@ -6,15 +6,15 @@ public class Empresa {
     private Integer idEmpresa;
     private String razaoSocial;
     private String apelido;
-    private String cnpj;
+    private String CNPJ;
     private String nomeFantasia;
     private List<Funcionario> funcionarios;
 
-    public Empresa(Integer idEmpresa, String razaoSocial, String apelido, String cnpj, String nomeFantasia, List<Funcionario> funcionarios) {
+    public Empresa(Integer idEmpresa, String razaoSocial, String apelido, String CNPJ, String nomeFantasia, List<Funcionario> funcionarios) {
         this.idEmpresa = idEmpresa;
         this.razaoSocial = razaoSocial;
         this.apelido = apelido;
-        this.cnpj = cnpj;
+        this.CNPJ = CNPJ;
         this.nomeFantasia = nomeFantasia;
         this.funcionarios = funcionarios;
     }
@@ -46,12 +46,12 @@ public class Empresa {
         this.apelido = apelido;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCNPJ() {
+        return CNPJ;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
     }
 
     public String getNomeFantasia() {

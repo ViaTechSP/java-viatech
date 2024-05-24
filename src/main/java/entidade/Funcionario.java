@@ -1,7 +1,7 @@
 package entidade;
 
 public class Funcionario {
-    private Integer idFuncionario;
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
@@ -9,12 +9,12 @@ public class Funcionario {
     private String cargo;
     private Integer fkEmpresa;
 
-    public Integer getIdFuncionario() {
-        return idFuncionario;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdFuncionario(Integer idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -63,5 +63,18 @@ public class Funcionario {
 
     public void setFkEmpresa(Integer fkEmpresa) {
         this.fkEmpresa = fkEmpresa;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "idFuncionario=" + id+
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", fkEmpresa=" + fkEmpresa +
+                '}';
     }
 }

@@ -9,42 +9,16 @@ import java.util.List;
 public class UsbCollector {
     Looca looca = new Looca();
 
-
-    private String quantidadeUsb;
-    private String dispositivoConectado;
-
-
-
-    public String getQuantidadeUsb() {
-        return quantidadeUsb = String.valueOf(looca.getDispositivosUsbGrupo().getTotalDispositvosUsbConectados());
-    }
-
-    public void setQuantidadeUsb(String quantidadeUsb) {
-        this.quantidadeUsb = quantidadeUsb;
-    }
-
-    public String getDispositivoConectado() {
-        return dispositivoConectado = String.valueOf(looca.getDispositivosUsbGrupo().getDispositivosUsbConectados());
-    }
-
-    public void setDispositivoConectado(String dispositivoConectado) {
-        this.dispositivoConectado = dispositivoConectado;
-    }
-
-
-
-
-
-
-
-
-
     public Integer getQuantidadeUsbConectados() {
         return looca.getDispositivosUsbGrupo().getTotalDispositvosUsbConectados();
     }
 
-    public Integer getQuantidadeUsbMaquina() {
-        return looca.getDispositivosUsbGrupo().getTotalDispositvosUsb();
+    public String getDispositivosConectados() {
+        return String.valueOf(looca.getDispositivosUsbGrupo().getDispositivosUsbConectados());
+    }
+
+    public String getQuantidadeUsbMaquina() {
+        return String.valueOf(looca.getDispositivosUsbGrupo().getTotalDispositvosUsb());
     }
 
     public List<DispositivoUsb> getDispositivosUsbConectados () {

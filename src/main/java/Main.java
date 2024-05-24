@@ -1,18 +1,15 @@
 import collectors.*;
-import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.discos.Disco;
-import com.github.britooo.looca.api.group.sistema.Sistema;
-import oshi.hardware.HardwareAbstractionLayer;
+import entidade.Funcionario;
+import entidade.Maquina;
+import entidade.Registro;
+import model.*;
+import org.springframework.dao.DataAccessException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 public class Main {
 
@@ -23,9 +20,13 @@ public class Main {
         CpuCollector cpuCollector = new CpuCollector();
         UsbCollector usbCollector = new UsbCollector();
         TemperaturaCollector temperaturaCollector = new TemperaturaCollector();
+        Registro registro = new Registro();
+        Funcionario funcionario = new Funcionario();
+        FuncionarioModel funcionarioModel = new FuncionarioModel();
+        Maquina maquina = new Maquina();
+        RegistroModel registroModel = new RegistroModel();
 
-
-
+        System.out.println(discoCollector.getGigabytesEscritas());
 
         Scanner input = new Scanner(System.in);
         LoginMetodos usar = new LoginMetodos();
@@ -35,20 +36,31 @@ public class Main {
             System.out.println("Digite seu email:");
             String email = input.next();
             validacao = usar.validarEmail(email);
+            funcionario.setEmail(email);
 
-        } while (validacao == false);
-        System.out.println("""
-                """);
+        } while (!validacao);
+
         do {
             System.out.println("Digite sua senha:");
             String senha = input.next();
             validacao = usar.validarSenha(senha);
-
+            funcionario.setSenha(senha);
         } while (validacao == false);
+
+        funcionario = funcionarioModel.buscarFuncionario(funcionario);
+
+        try {
+            if (validacao = funcionario.getId() != 0){
+                System.out.println("Bem vindo, %s".formatted(funcionario.getNome()));
+            } else {
+                System.out.println("E-mail ou senha inválidos. Tente novamente");
+            }
+        } catch (DataAccessException e){
+            System.out.println("erro");
+        }
 
         if(validacao == true){
             System.out.println("""
-                    Bem-vindo!!
 
                     ██╗   ██╗██╗ █████╗ ████████╗███████╗ ██████╗██╗  ██╗
                     ██║   ██║██║██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║
@@ -76,78 +88,37 @@ public class Main {
                 opcao = input.nextInt();
 
                 if (opcao == 1){
+
+
+
+
                     Timer timer = new Timer();
-                    LocalDateTime dataHorario = LocalDateTime.now();
+
                     TimerTask tarefa = new TimerTask(){
                        Integer contagem = 0;
                         public void run() {
+                            registro.setDiscoGigabyteLeitura(discoCollector.getGigabytesLeituras());
+                            registro.setDiscoGigabyteEscrita(discoCollector.getGigabytesEscritas());
+                            registro.setCpuPorcentagemUso(cpuCollector.getUsoCpu());
+                            registro.setCpuTemperatura(temperaturaCollector.getTemperatura());
+                            registro.setRamUtilizada(ramCollector.getMemoriaUtilizada());
+                            registro.setQtdDispositivosConectados(usbCollector.getQuantidadeUsbConectados());
+                            registro.setFkEspecificacaoMaquina(maquina.getIdMaquina());
                             contagem++;
+                            LocalDateTime dataHorario = LocalDateTime.now();
 
                             System.out.println("""
                                     Coletando... %d
                                     """.formatted(contagem));
 
                             DateTimeFormatter formatadorDataHora =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-                    System.out.println("""
+                            System.out.println("""
                             Registro %d
                             Data e horario: %s
                             """.formatted(contadorRegistros, formatadorDataHora.format(dataHorario)));
 
-                    System.out.println("""
-                            -----------------------------------------
-                            INFORMAÇÕES DO DISCO:
-                            Quantidade de discos: %s
-                            Gigabytes de leitura: %s
-                            Gigabytes de escrita: %s
-                            Capacidade total dos discos: %s
-                            -----------------------------------------
-                            """.formatted(discoCollector.getQuantidadeDisco(), discoCollector.getGigabytesLeituras(), discoCollector.getGigabytesEscritas(), discoCollector.getTotalGigabytesDisco()));
+                            registroModel.inserirDadosRegistro(registro);
 
-
-                    System.out.println("""
-                            -----------------------------------------
-                            INFORMAÇÕES DA MEMÓRIA RAM:
-                            Memória RAM em uso: %s
-                            Memória RAM total: %s
-                            Memória RAM disponível: %s
-                            -----------------------------------------
-                            """.formatted(ramCollector.getMemoriaUtilizada(), ramCollector.getMemoriaTotal(), ramCollector.getDisponivel()));
-
-                    System.out.println("""
-                            -----------------------------------------
-                            INFORMAÇÕES DO PROCESSADOR:
-                            Numero de CPUs físicas: %s
-                            Numero de CPUs logicas: %s
-                            Frequência: %s GHz
-                            Nome: %s
-                            -----------------------------------------
-                            """.formatted(cpuCollector.getCpuFisica(),  cpuCollector.getCpuLogica(), cpuCollector.getFrequencia(), cpuCollector.getNomeCpu()));
-
-                    System.out.println("""
-                            -----------------------------------------
-                            INFORMAÇÕES USB:
-                            Quantidade dispositivos conectados: %s
-                            Dispositivos conectados: %s
-                            -----------------------------------------
-                            """.formatted(usbCollector.getQuantidadeUsbConectados(), usbCollector.getNomeDosDispositivos()));
-
-
-                    DiscoBanco.cadastrarDados();
-                    try {
-                        RamBanco.cadastrarDados();
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
-                        CpuBanco.cadastrarDados();
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
-                        UsbBanco.cadastrarDados();
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
                         }
                     };
                     timer.scheduleAtFixedRate(tarefa, 200, 5000L);
