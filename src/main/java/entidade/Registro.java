@@ -5,21 +5,19 @@ import java.time.LocalDateTime;
 public class Registro {
     private Integer idRegistro;
     private LocalDateTime dtHora;
-    private Double discoGigabyteLeitura;
-    private Double discoGigabyteEscrita;
     private Double cpuPorcentagemUso;
     private Double cpuTemperatura;
+    private Double discoDisponivel;
     private Double ramUtilizada;
     private Integer qtdDispositivosConectados;
     private Integer fkEspecificacaoMaquina;
 
-    public Registro(Integer idRegistro, LocalDateTime dtHora, Double discoGigabyteLeitura, Double discoGigabyteEscrita, Double cpuPorcentagemUso, Double cpuTemperatura, Double ramUtilizada, Integer qtdDispositivosConectados, Integer fkEspecificacaoMaquina) {
+    public Registro(Integer idRegistro, LocalDateTime dtHora, Double cpuPorcentagemUso, Double cpuTemperatura, Double discoDisponivel, Double ramUtilizada, Integer qtdDispositivosConectados, Integer fkEspecificacaoMaquina) {
         this.idRegistro = idRegistro;
         this.dtHora = dtHora;
-        this.discoGigabyteLeitura = discoGigabyteLeitura;
-        this.discoGigabyteEscrita = discoGigabyteEscrita;
         this.cpuPorcentagemUso = cpuPorcentagemUso;
         this.cpuTemperatura = cpuTemperatura;
+        this.discoDisponivel = discoDisponivel;
         this.ramUtilizada = ramUtilizada;
         this.qtdDispositivosConectados = qtdDispositivosConectados;
         this.fkEspecificacaoMaquina = fkEspecificacaoMaquina;
@@ -44,22 +42,6 @@ public class Registro {
         this.dtHora = dtHora;
     }
 
-    public Double getDiscoGigabyteLeitura() {
-        return discoGigabyteLeitura;
-    }
-
-    public void setDiscoGigabyteLeitura(Double discoGigabyteLeitura) {
-        this.discoGigabyteLeitura = discoGigabyteLeitura;
-    }
-
-    public Double getDiscoGigabyteEscrita() {
-        return discoGigabyteEscrita;
-    }
-
-    public void setDiscoGigabyteEscrita(Double discoGigabyteEscrita) {
-        this.discoGigabyteEscrita = discoGigabyteEscrita;
-    }
-
     public Double getCpuPorcentagemUso() {
         return cpuPorcentagemUso;
     }
@@ -74,6 +56,14 @@ public class Registro {
 
     public void setCpuTemperatura(Double cpuTemperatura) {
         this.cpuTemperatura = cpuTemperatura;
+    }
+
+    public Double getDiscoDisponivel() {
+        return discoDisponivel;
+    }
+
+    public void setDiscoDisponivel(Double discoDisponivel) {
+        this.discoDisponivel = discoDisponivel;
     }
 
     public Double getRamUtilizada() {
@@ -105,11 +95,10 @@ public class Registro {
         return "Registro{" +
                 "idRegistro=" + idRegistro +
                 ", dtHora=" + dtHora +
-                ", discoGigabyteLeitura='" + discoGigabyteLeitura + '\'' +
-                ", discoGigabyteEscrita='" + discoGigabyteEscrita + '\'' +
                 ", cpuPorcentagemUso=" + cpuPorcentagemUso +
                 ", cpuTemperatura=" + cpuTemperatura +
-                ", ramUtilizada='" + ramUtilizada + '\'' +
+                ", discoDisponivel=" + discoDisponivel +
+                ", ramUtilizada=" + ramUtilizada +
                 ", qtdDispositivosConectados=" + qtdDispositivosConectados +
                 ", fkEspecificacaoMaquina=" + fkEspecificacaoMaquina +
                 '}';

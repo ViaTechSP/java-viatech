@@ -12,22 +12,20 @@ public class CpuCollector {
         return looca.getProcessador().getNome();
     }
 
-    public String getCpuFisica() {
-        return String.valueOf(looca.getProcessador().getNumeroCpusFisicas());
+    public Integer getCpuFisica() {
+        return looca.getProcessador().getNumeroCpusFisicas();
     }
 
-
-
-    public String getCpuLogica() {
-        return String.valueOf(looca.getProcessador().getNumeroCpusLogicas());
+    public Integer getCpuLogica() {
+        return looca.getProcessador().getNumeroCpusLogicas();
     }
 
     public Double getUsoCpu() {
-        return looca.getProcessador().getUso();
+        return Math.round(looca.getProcessador().getUso())+1D;
     }
 
-    public String getFrequencia() {
-        return String.valueOf(looca.getProcessador().getFrequencia() / 1e9);
+    public Double getFrequencia() {
+        return looca.getProcessador().getFrequencia() / 1e9;
     }
 
 

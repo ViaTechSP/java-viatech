@@ -59,7 +59,7 @@ public class Maquina {
     }
 
     @Override
-    public String toString() {
+    public String   toString() {
         return "Maquina{" +
                 "idMaquina=" + idMaquina +
                 ", dominio='" + dominio + '\'' +

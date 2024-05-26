@@ -9,8 +9,8 @@ public class RegistroModel {
         BancoConexao bancoConexao = new BancoConexao();
         JdbcTemplate conn = bancoConexao.getBancoConexao();
 
-        conn.update("INSERT INTO registro VALUES (null, default, ?, ?, ?, ?, ?, ?, ?)", registro.getDiscoGigabyteLeitura(), registro.getDiscoGigabyteEscrita(), registro.getCpuPorcentagemUso(),
-                registro.getCpuTemperatura(), registro.getRamUtilizada(),
+        conn.update("INSERT INTO registro VALUES (null, default, ?, ?, ?, ?, ?, ?)", registro.getCpuPorcentagemUso(),
+                registro.getCpuTemperatura(), registro.getDiscoDisponivel() ,registro.getRamUtilizada(),
                 registro.getQtdDispositivosConectados(), registro.getFkEspecificacaoMaquina());
     }
 }
