@@ -2,6 +2,7 @@ package collectors;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.dispositivos.DispositivoUsb;
+import oshi.hardware.UsbDevice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,25 +14,17 @@ public class UsbCollector {
         return looca.getDispositivosUsbGrupo().getTotalDispositvosUsbConectados();
     }
 
-    public String getDispositivosConectados() {
-        return String.valueOf(looca.getDispositivosUsbGrupo().getDispositivosUsbConectados());
+    public List<String> getNome(){
+        List<String> nomes = new ArrayList<>();
+        for (DispositivoUsb dispositivoUsb : looca.getDispositivosUsbGrupo().getDispositivosUsb()){
+            nomes.add(dispositivoUsb.getNome());
+        }
+        return nomes;
     }
 
-    public String getQuantidadeUsbMaquina() {
-        return String.valueOf(looca.getDispositivosUsbGrupo().getTotalDispositvosUsb());
-    }
-
-    public List<DispositivoUsb> getDispositivosUsbConectados () {
-        return looca.getDispositivosUsbGrupo().getDispositivosUsbConectados();
-    }
-
-    public List<DispositivoUsb> getDispositivosUsb() {
-        return looca.getDispositivosUsbGrupo().getDispositivosUsb();
-    }
-
-    public List<String> getNomeDosDispositivos() {
+    public List<String> getNomeDosDispositivosConectados() {
         List<String> nomesDispositivos = new ArrayList<>();
-        for (int i = 0; i < looca.getDispositivosUsbGrupo().getDispositivosUsb().size(); i++) {
+        for (int i = 0; i < looca.getDispositivosUsbGrupo().getDispositivosUsbConectados().size(); i++) {
             nomesDispositivos.add(looca.getDispositivosUsbGrupo().getDispositivosUsb().get(i).getNome());
         }
         return nomesDispositivos;

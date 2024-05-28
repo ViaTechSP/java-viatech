@@ -4,7 +4,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class SlackConfig {
-    private String token = "xoxb-7163001649796-7161716138455-wMgPTHkoFnSZua8YLinBM7aD"; // Substitua pelo seu token do bot Slack
+    private String token = "xoxb-7163001649796-7162312869991-47uQKXQq7zMrGnR17ueKdzdR";
     private String channel;
     private String message;
 

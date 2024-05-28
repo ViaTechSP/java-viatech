@@ -1,12 +1,17 @@
 package banco;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import javax.sql.DataSource;
 
 
 public class BancoConexao {
-
     private JdbcTemplate conexaoDoBanco;
+
+
 
     public BancoConexao() {
         BasicDataSource dataSource = new BasicDataSource();

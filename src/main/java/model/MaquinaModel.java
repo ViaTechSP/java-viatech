@@ -6,12 +6,12 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class MaquinaModel {
-    public void inserirMaquina(Maquina maquina){
+    public void inserirMaquina(Maquina maquina, Integer idEstacao){
         BancoConexao bancoConexao = new BancoConexao();
         JdbcTemplate conn = bancoConexao.getBancoConexao();
 
-        String query = "INSERT INTO maquina VALUES (null, ?, ?, ?, 1)";
-        conn.update(query, maquina.getDominio(), maquina.getIp(), maquina.getSistemaOperacional());
+        String query = "INSERT INTO maquina VALUES (null, ?, ?, ?, ?)";
+        conn.update(query, maquina.getDominio(), maquina.getIp(), maquina.getSistemaOperacional(), idEstacao);
     }
 
     public Maquina exibirMaquina (Maquina maquina){

@@ -1,13 +1,15 @@
 import alerta.SlackConfig;
 import collectors.*;
-import entidade.EspecificacaoMaquina;
-import entidade.Funcionario;
-import entidade.Maquina;
-import entidade.Registro;
+import com.github.britooo.looca.api.core.Looca;
+import entidade.*;
 import model.*;
+import oshi.SystemInfo;
+import oshi.hardware.HardwareAbstractionLayer;
+import oshi.hardware.UsbDevice;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,11 +33,17 @@ public class Main {
         EspecificacaoMaquinaModel especificacaoMaquinaModel = new EspecificacaoMaquinaModel();
         MaquinaModel maquinaModel = new MaquinaModel();
         SlackModel slackModel = new SlackModel();
-        SlackConfig slackConfig = new SlackConfig();
+        EstacaoModel estacaoModel = new EstacaoModel();
+
+        Looca looca = new Looca();
 
         Scanner input = new Scanner(System.in);
         LoginMetodos usar = new LoginMetodos();
         Boolean validacao;
+
+        System.out.println(usbCollector.getNome());
+        System.out.println(usbCollector.getNomeDosDispositivosConectados());
+        System.out.println(usbCollector.getQuantidadeUsbConectados());
 
         do{
             System.out.println("Digite seu email:");
@@ -100,13 +108,24 @@ public class Main {
 
                         maquina = maquinaModel.exibirMaquina(maquina) != null ? maquinaModel.exibirMaquina(maquina) : maquina;
                         if (maquina.getIdMaquina() == null){
-                            maquinaModel.inserirMaquina(maquina);
+                            System.out.println("Máquina sem cadastrado! Escolha uma estação para essa máquina:");
+
+                            List<Estacao> estacoesDisponiveis = estacaoModel.listaEstacoesDisponiveis();
+                            Integer estacao;
+                            System.out.println("Estações disponíveis:");
+                            for (int i = 0; i < estacoesDisponiveis.size() ; i++) {
+                                System.out.println("""
+                                  %d - %s
+                                 """.formatted(i + 1, estacoesDisponiveis.get(i).getNome()));
+                            }
+                            estacao = input.nextInt();
+
+                            maquinaModel.inserirMaquina(maquina, estacoesDisponiveis.get(estacao - 1).getIdEstacao());
                             maquina = maquinaModel.exibirMaquina(maquina);
                             System.out.println("Máquina cadastrada com sucesso!");
                         } else {
                             System.out.println("Máquina já cadastrada.");
                         }
-
 
                         especificacaoMaquina.setFkMaquina(maquina.getIdMaquina());
                         System.out.println(maquina);
@@ -127,6 +146,7 @@ public class Main {
                         Timer timer = new Timer();
 
                         Maquina finalMaquina = maquina;
+                        EspecificacaoMaquina finalEspecificacaoMaquina = especificacaoMaquina;
                         TimerTask tarefa = new TimerTask(){
                             Integer contagem = 0;
                             public void run() {
@@ -152,7 +172,7 @@ public class Main {
                             """.formatted(contadorRegistros, formatadorDataHora.format(dataHorario)));
 
                                 registroModel.inserirDadosRegistro(registro);
-                                slackModel.verificarRegistro(registro, finalMaquina);
+                                slackModel.verificarRegistro(registro, finalEspecificacaoMaquina);
                             }
                         };
                         timer.scheduleAtFixedRate(tarefa, 200, 5000L);
