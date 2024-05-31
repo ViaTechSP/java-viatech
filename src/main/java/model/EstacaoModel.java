@@ -14,7 +14,7 @@ public class EstacaoModel {
 
     public List<Estacao> listaEstacoesDisponiveis (){
         BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.getBancoConexao();
+        JdbcTemplate conn = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
 
         try {
             String query = "SELECT e.nome, e.idEstacao FROM estacao AS e " +
@@ -23,7 +23,7 @@ public class EstacaoModel {
             RowMapper<Estacao> rowMapper = new BeanPropertyRowMapper<>(Estacao.class);
             return conn.query(query, rowMapper);
         } catch (Exception e) {
-            e.printStackTrace(); // Melhor registrar o erro em vez de retornar null
+            e.printStackTrace();
             return null;
         }
     }

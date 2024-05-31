@@ -6,22 +6,46 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class EspecificacaoMaquinaModel {
-    public void inserirDadosEspecificacao(EspecificacaoMaquina especificacaoMaquina) {
+    public void inserirDadosEspecificacaoMySql(EspecificacaoMaquina especificacaoMaquina) {
         BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.getBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
 
-        conn.update("INSERT INTO especificacaoMaquina VALUES (null, ?, ?, ?, ?, ?)", especificacaoMaquina.getNomeCpu(), especificacaoMaquina.getFrequenciaCpu(),
+        connMySql.update("INSERT INTO especificacaoMaquina VALUES (null, ?, ?, ?, ?, ?)", especificacaoMaquina.getNomeCpu(), especificacaoMaquina.getFrequenciaCpu(),
                 especificacaoMaquina.getCapacidadeTotalArmazenamento(),
                 especificacaoMaquina.getRamTotal(), especificacaoMaquina.getFkMaquina());
     }
 
-    public EspecificacaoMaquina verificarExistenciaMaquina(EspecificacaoMaquina especificacaoMaquina){
+    public void inserirDadosEspecificacaoSqlServer(EspecificacaoMaquina especificacaoMaquina) {
         BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.getBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+
+        connSqlServer.update("INSERT INTO especificacaoMaquina (nomeCpu, frequenciaCpu, capacidadeTotalArmazenamento, ramTotal, fkMaquina) VALUES (?, ?, ?, ?, ?)",
+                especificacaoMaquina.getNomeCpu(),
+                especificacaoMaquina.getFrequenciaCpu(),
+                especificacaoMaquina.getCapacidadeTotalArmazenamento(),
+                especificacaoMaquina.getRamTotal(),
+                especificacaoMaquina.getFkMaquina());
+    }
+
+    public EspecificacaoMaquina verificarExistenciaMaquinaMySql(Integer fkMaquina){
+        BancoConexao bancoConexao = new BancoConexao();
+        JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
 
         try{
             String query = "SELECT * FROM especificacaoMaquina WHERE fkMaquina = ?";
-            return conn.queryForObject(query, new BeanPropertyRowMapper<>(EspecificacaoMaquina.class), especificacaoMaquina.getFkMaquina());
+            return connMySql.queryForObject(query, new BeanPropertyRowMapper<>(EspecificacaoMaquina.class), fkMaquina);
+        } catch (Exception e){
+            return null;
+        }
+    }
+
+    public EspecificacaoMaquina verificarExistenciaMaquinaSqlServer(Integer fkMaquina){
+        BancoConexao bancoConexao = new BancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+
+        try{
+            String query = "SELECT * FROM especificacaoMaquina WHERE fkMaquina = ?";
+            return connSqlServer.queryForObject(query, new BeanPropertyRowMapper<>(EspecificacaoMaquina.class), fkMaquina);
         } catch (Exception e){
             return null;
         }

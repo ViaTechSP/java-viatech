@@ -6,17 +6,15 @@ public class Registro {
     private Integer idRegistro;
     private LocalDateTime dtHora;
     private Double cpuPorcentagemUso;
-    private Double cpuTemperatura;
     private Double discoDisponivel;
     private Double ramUtilizada;
     private Integer qtdDispositivosConectados;
     private Integer fkEspecificacaoMaquina;
 
-    public Registro(Integer idRegistro, LocalDateTime dtHora, Double cpuPorcentagemUso, Double cpuTemperatura, Double discoDisponivel, Double ramUtilizada, Integer qtdDispositivosConectados, Integer fkEspecificacaoMaquina) {
+    public Registro(Integer idRegistro, LocalDateTime dtHora, Double cpuPorcentagemUso, Double discoDisponivel, Double ramUtilizada, Integer qtdDispositivosConectados, Integer fkEspecificacaoMaquina) {
         this.idRegistro = idRegistro;
         this.dtHora = dtHora;
         this.cpuPorcentagemUso = cpuPorcentagemUso;
-        this.cpuTemperatura = cpuTemperatura;
         this.discoDisponivel = discoDisponivel;
         this.ramUtilizada = ramUtilizada;
         this.qtdDispositivosConectados = qtdDispositivosConectados;
@@ -48,14 +46,6 @@ public class Registro {
 
     public void setCpuPorcentagemUso(Double cpuPorcentagemUso) {
         this.cpuPorcentagemUso = cpuPorcentagemUso;
-    }
-
-    public Double getCpuTemperatura() {
-        return cpuTemperatura;
-    }
-
-    public void setCpuTemperatura(Double cpuTemperatura) {
-        this.cpuTemperatura = cpuTemperatura;
     }
 
     public Double getDiscoDisponivel() {
@@ -96,7 +86,6 @@ public class Registro {
                 "idRegistro=" + idRegistro +
                 ", dtHora=" + dtHora +
                 ", cpuPorcentagemUso=" + cpuPorcentagemUso +
-                ", cpuTemperatura=" + cpuTemperatura +
                 ", discoDisponivel=" + discoDisponivel +
                 ", ramUtilizada=" + ramUtilizada +
                 ", qtdDispositivosConectados=" + qtdDispositivosConectados +

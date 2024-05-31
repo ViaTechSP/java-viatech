@@ -10,14 +10,14 @@ public class EspecificacaoMaquina {
     private Double ramTotal;
     private Integer fkMaquina;
 
-    public EspecificacaoMaquina(Integer idEspecificacaoMaquina, String nomeCpu, Double frequenciaCpu, Integer qtdCpuFisica, Integer qtdCpuLogica, Double capacidadeTotalArmazenamento, Double ramTotal, Integer fkMaquina) {
-        this.idEspecificacaoMaquina = idEspecificacaoMaquina;
-        this.nomeCpu = nomeCpu;
-        this.frequenciaCpu = frequenciaCpu;
-        this.qtdCpuFisica = qtdCpuFisica;
-        this.qtdCpuLogica = qtdCpuLogica;
-        this.capacidadeTotalArmazenamento = capacidadeTotalArmazenamento;
-        this.ramTotal = ramTotal;
+    public EspecificacaoMaquina( EspecificacaoMaquina especificacaoMaquina,Integer fkMaquina) {
+        this.idEspecificacaoMaquina = especificacaoMaquina.idEspecificacaoMaquina;
+        this.nomeCpu = especificacaoMaquina.nomeCpu;
+        this.frequenciaCpu = especificacaoMaquina.frequenciaCpu;
+        this.qtdCpuFisica = especificacaoMaquina.qtdCpuFisica;
+        this.qtdCpuLogica = especificacaoMaquina.qtdCpuLogica;
+        this.capacidadeTotalArmazenamento = especificacaoMaquina.capacidadeTotalArmazenamento;
+        this.ramTotal = especificacaoMaquina.ramTotal;
         this.fkMaquina = fkMaquina;
     }
 

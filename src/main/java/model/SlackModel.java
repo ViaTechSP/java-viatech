@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class SlackModel {
     BancoConexao bancoConexao = new BancoConexao();
-    JdbcTemplate conn = bancoConexao.getBancoConexao();
+    JdbcTemplate conn = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
     SlackConfig slackConfig = new SlackConfig();
     HistoricoAlertaModel historicoAlertaModel = new HistoricoAlertaModel();
 
@@ -26,9 +26,6 @@ public class SlackModel {
     }
 
     public Metrica buscarMetrica(Integer fkMaquina) {
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.getBancoConexao();
-
         String query = "SELECT * FROM metrica WHERE fkMaquina = ?";
         return conn.queryForObject(query, new BeanPropertyRowMapper<>(Metrica.class), fkMaquina);
     }
