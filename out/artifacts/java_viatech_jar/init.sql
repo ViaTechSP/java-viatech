@@ -1,11 +1,3 @@
-DROP DATABASE viatech;
-CREATE DATABASE viatech;
-USE viatech;
-
--- CRIANDO USUÁRIO COM A SENHA PADRÃO     
--- CREATE USER 'usuario_viatech'@'localhost' IDENTIFIED BY 'viatech';
--- GRANT ALL PRIVILEGES ON `viatech`.* TO 'usuario_viatech'@'localhost';
--- FLUSH PRiVILEGES;
 
 CREATE TABLE empresa(
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
