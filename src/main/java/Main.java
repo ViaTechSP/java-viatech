@@ -35,20 +35,28 @@ public class Main {
         Scanner input = new Scanner(System.in);
         LoginMetodos usar = new LoginMetodos();
         boolean validacao;
+        String email, senha;
 
-        do{
+        do {
             System.out.println("Digite seu email:");
-            String email = input.next();
-            validacao = usar.validarEmail(email);
-            funcionario.setEmail(email);
-
+            if (input.hasNext()) {
+                email = input.next();
+                validacao = usar.validarEmail(email);
+                funcionario.setEmail(email);
+            } else {
+                break; // Sair do loop se não houver mais entrada
+            }
         } while (!validacao);
 
         do {
             System.out.println("Digite sua senha:");
-            String senha = input.next();
-            validacao = usar.validarSenha(senha);
-            funcionario.setSenha(senha);
+            if (input.hasNext()) {
+                senha = input.next();
+                validacao = usar.validarSenha(senha);
+                funcionario.setSenha(senha);
+            } else {
+                break; // Sair do loop se não houver mais entrada
+            }
         } while (!validacao);
 
         try {
