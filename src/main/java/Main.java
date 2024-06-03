@@ -36,20 +36,10 @@ public class Main {
         String email, senha;
 
         System.out.println("Digite seu email:");
-        if (input.hasNext()) {
-            email = input.next();
-        } else {
-            System.out.println("Email inválido. Tente novamente.");
-            return;  // Encerrar o programa se o email for inválido
-        }
+        email = input.nextLine().trim(); // Use nextLine() para ler a linha inteira
 
         System.out.println("Digite sua senha:");
-        if (input.hasNext()) {
-            senha = input.next();
-        } else {
-            System.out.println("Senha inválida. Tente novamente.");
-            return;  // Encerrar o programa se a senha for inválida
-        }
+        senha = input.nextLine().trim(); // Use nextLine() para ler a linha inteira
 
         try {
             funcionario = funcionarioModel.buscarFuncionario(email, senha);
