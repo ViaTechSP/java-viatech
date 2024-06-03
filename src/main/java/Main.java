@@ -19,9 +19,9 @@ public class Main {
         UsbCollector usbCollector = new UsbCollector();
         MaquinaCollector maquinaCollector = new MaquinaCollector();
         Registro registro = new Registro();
-        Funcionario funcionario = new Funcionario();
         FuncionarioModel funcionarioModel = new FuncionarioModel();
         Maquina maquina = new Maquina();
+        Funcionario funcionario = new Funcionario();
         Maquina maquinaMySql;
         Maquina maquinaSqlServer;
         EspecificacaoMaquina especificacaoMaquina = new EspecificacaoMaquina();
@@ -33,62 +33,51 @@ public class Main {
         MainModel mainModel = new MainModel();
 
         Scanner input = new Scanner(System.in);
-        LoginMetodos usar = new LoginMetodos();
-        boolean validacao;
         String email, senha;
 
-        do {
-            System.out.println("Digite seu email:");
-            if (input.hasNext()) {
-                email = input.next();
-                validacao = usar.validarEmail(email);
-                funcionario.setEmail(email);
-            } else {
-                break; // Sair do loop se não houver mais entrada
-            }
-        } while (!validacao);
+        System.out.println("Digite seu email:");
+        email = input.next();
 
-        do {
-            System.out.println("Digite sua senha:");
-            if (input.hasNext()) {
-                senha = input.next();
-                validacao = usar.validarSenha(senha);
-                funcionario.setSenha(senha);
-            } else {
-                break; // Sair do loop se não houver mais entrada
-            }
-        } while (!validacao);
+        System.out.println("Digite sua senha:");
+        senha = input.next();
 
         try {
-            funcionario = funcionarioModel.buscarFuncionario(funcionario);
+
+            funcionario = funcionarioModel.buscarFuncionario(email, senha);
+
+            if (funcionario == null) {
+                System.out.println("E-mail ou senha inválidos. Tente novamente.");
+                return;  // Encerrar o programa se o login falhar
+            }
+
             System.out.println("Bem vindo, %s".formatted(funcionario.getNome()));
 
             System.out.println("""
 
-                ██╗   ██╗██╗ █████╗ ████████╗███████╗ ██████╗██╗  ██╗
-                ██║   ██║██║██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║
-                ██║   ██║██║███████║   ██║   █████╗  ██║     ███████║
-                ╚██╗ ██╔╝██║██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║
-                 ╚████╔╝ ██║██║  ██║   ██║   ███████╗╚██████╗██║  ██║
-                  ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
+                    ██╗   ██╗██╗ █████╗ ████████╗███████╗ ██████╗██╗  ██╗
+                    ██║   ██║██║██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║
+                    ██║   ██║██║███████║   ██║   █████╗  ██║     ███████║
+                    ╚██╗ ██╔╝██║██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║
+                     ╚████╔╝ ██║██║  ██║   ██║   ███████╗╚██████╗██║  ██║
+                      ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
 
-                  """);
+                      """);
 
             int opcao;
 
             System.out.println("""
-                .-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.
-                |                                                                       |
-                |           Opções:                                                     |
-                |           Pressione 1 para verificar os dados na máquina              |
-                |           Pressione 2 para sair                                       |
-                !                                                                       !
-                `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
-                """);
+                    .-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.
+                    |                                                                       |
+                    |           Opções:                                                     |
+                    |           Pressione 1 para verificar os dados na máquina              |
+                    |           Pressione 2 para sair                                       |
+                    !                                                                       !
+                    `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
+                    """);
             while (true) {
                 opcao = input.nextInt();
 
-                if (opcao == 1){
+                if (opcao == 1) {
                     maquina.setDominio(maquinaCollector.getDominio());
                     maquina.setIp(maquinaCollector.getIp());
                     maquina.setSistemaOperacional(maquinaCollector.getSistemaOperacional());
@@ -100,16 +89,16 @@ public class Main {
                     especificacaoMaquina.setQtdCpuLogica(cpuCollector.getCpuLogica());
                     especificacaoMaquina.setRamTotal(ramCollector.getMemoriaTotal());
 
-                    if (!mainModel.maquinaExists(maquina.getDominio())){
+                    if (!mainModel.maquinaExists(maquina.getDominio())) {
                         System.out.println("Máquina sem cadastrado! Escolha uma estação para essa máquina:");
 
                         List<Estacao> estacoesDisponiveis = estacaoModel.listaEstacoesDisponiveis();
                         int estacao;
                         System.out.println("Estações disponíveis:");
-                        for (int i = 0; i < estacoesDisponiveis.size() ; i++) {
+                        for (int i = 0; i < estacoesDisponiveis.size(); i++) {
                             System.out.println("""
-                              %d - %s
-                             """.formatted(i + 1, estacoesDisponiveis.get(i).getNome()));
+                                     %d - %s
+                                    """.formatted(i + 1, estacoesDisponiveis.get(i).getNome()));
                         }
                         estacao = input.nextInt();
 
@@ -127,7 +116,7 @@ public class Main {
                     EspecificacaoMaquina especificacaoMaquinaMySql = new EspecificacaoMaquina(especificacaoMaquina, maquinaMySql.getIdMaquina());
                     EspecificacaoMaquina especificacaoMaquinaSqlServer = new EspecificacaoMaquina(especificacaoMaquina, maquinaSqlServer.getIdMaquina());
 
-                    if (!mainModel.especificacaoMaquinaExists(maquinaMySql.getIdMaquina(), maquinaSqlServer.getIdMaquina())){
+                    if (!mainModel.especificacaoMaquinaExists(maquinaMySql.getIdMaquina(), maquinaSqlServer.getIdMaquina())) {
                         especificacaoMaquinaModel.inserirDadosEspecificacaoMySql(especificacaoMaquinaMySql);
                         especificacaoMaquinaModel.inserirDadosEspecificacaoSqlServer(especificacaoMaquinaSqlServer);
 
@@ -144,7 +133,7 @@ public class Main {
 
                     Timer timer = new Timer();
 
-                    TimerTask tarefa = new TimerTask(){
+                    TimerTask tarefa = new TimerTask() {
                         Integer contagem = 0;
 
                         public void run() {
@@ -157,14 +146,14 @@ public class Main {
                             LocalDateTime dataHorario = LocalDateTime.now();
 
                             System.out.println("""
-                                Coletando... %d
-                                """.formatted(contagem));
+                                    Coletando... %d
+                                    """.formatted(contagem));
 
-                            DateTimeFormatter formatadorDataHora =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                            DateTimeFormatter formatadorDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                             System.out.println("""
-                        Registro %d
-                        Data e horario: %s
-                        """.formatted(contagem, formatadorDataHora.format(dataHorario)));
+                                    Registro %d
+                                    Data e horario: %s
+                                    """.formatted(contagem, formatadorDataHora.format(dataHorario)));
 
                             registroModel.inserirRegistroMySql(registro, finalEspecificacaoMaquinaMySql.getIdEspecificacaoMaquina());
                             registroModel.inserirDadosRegistroSqlServer(registro, finalEspecificacaoMaquinaSqlServer.getIdEspecificacaoMaquina());
@@ -181,8 +170,7 @@ public class Main {
                     System.out.println("Insira um número válido\n");
                 }
             }
-        } catch (Exception e){
-            System.out.println("E-mail ou senha inválidos. Tente novamente.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-    }
-}
+    }}
