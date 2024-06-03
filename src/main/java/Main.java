@@ -21,7 +21,7 @@ public class Main {
         Registro registro = new Registro();
         FuncionarioModel funcionarioModel = new FuncionarioModel();
         Maquina maquina = new Maquina();
-        Funcionario funcionario = new Funcionario();
+        Funcionario funcionario = null;
         Maquina maquinaMySql;
         Maquina maquinaSqlServer;
         EspecificacaoMaquina especificacaoMaquina = new EspecificacaoMaquina();
@@ -36,13 +36,22 @@ public class Main {
         String email, senha;
 
         System.out.println("Digite seu email:");
-        email = input.next();
+        if (input.hasNext()) {
+            email = input.next();
+        } else {
+            System.out.println("Email inválido. Tente novamente.");
+            return;  // Encerrar o programa se o email for inválido
+        }
 
         System.out.println("Digite sua senha:");
-        senha = input.next();
+        if (input.hasNext()) {
+            senha = input.next();
+        } else {
+            System.out.println("Senha inválida. Tente novamente.");
+            return;  // Encerrar o programa se a senha for inválida
+        }
 
         try {
-
             funcionario = funcionarioModel.buscarFuncionario(email, senha);
 
             if (funcionario == null) {
