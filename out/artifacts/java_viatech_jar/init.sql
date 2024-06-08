@@ -3,8 +3,7 @@ idMaquina INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 dominio VARCHAR(50) NOT NULL UNIQUE,
 ip VARCHAR(50) NOT NULL,
 sistemaOperacional VARCHAR(45) NOT NULL,
-fkEstacao INT NOT NULL,
-CONSTRAINT fkEstacao FOREIGN KEY (fkEstacao) REFERENCES estacao (idEstacao) ON DELETE CASCADE
+fkEstacao INT NOT NULL UNIQUE
 );
 
 CREATE TABLE especificacaoMaquina(
