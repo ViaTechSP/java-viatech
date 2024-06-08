@@ -19,9 +19,9 @@ public class Main {
         UsbCollector usbCollector = new UsbCollector();
         MaquinaCollector maquinaCollector = new MaquinaCollector();
         Registro registro = new Registro();
-        Funcionario funcionario = new Funcionario();
         FuncionarioModel funcionarioModel = new FuncionarioModel();
         Maquina maquina = new Maquina();
+        Funcionario funcionario = new Funcionario();
         Maquina maquinaMySql;
         Maquina maquinaSqlServer;
         EspecificacaoMaquina especificacaoMaquina = new EspecificacaoMaquina();
@@ -36,15 +36,12 @@ public class Main {
         LoginMetodos usar = new LoginMetodos();
         boolean validacao;
 
-
         do{
             System.out.println("Digite seu email:");
             String email = input.next();
             validacao = usar.validarEmail(email);
             funcionario.setEmail(email);
-
         } while (!validacao);
-
         do {
             System.out.println("Digite sua senha:");
             String senha = input.next();
@@ -54,34 +51,35 @@ public class Main {
 
         try {
             funcionario = funcionarioModel.buscarFuncionario(funcionario);
+
             System.out.println("Bem vindo, %s".formatted(funcionario.getNome()));
 
             System.out.println("""
 
-                ██╗   ██╗██╗ █████╗ ████████╗███████╗ ██████╗██╗  ██╗
-                ██║   ██║██║██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║
-                ██║   ██║██║███████║   ██║   █████╗  ██║     ███████║
-                ╚██╗ ██╔╝██║██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║
-                 ╚████╔╝ ██║██║  ██║   ██║   ███████╗╚██████╗██║  ██║
-                  ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
+                    ██╗   ██╗██╗ █████╗ ████████╗███████╗ ██████╗██╗  ██╗
+                    ██║   ██║██║██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║
+                    ██║   ██║██║███████║   ██║   █████╗  ██║     ███████║
+                    ╚██╗ ██╔╝██║██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║
+                     ╚████╔╝ ██║██║  ██║   ██║   ███████╗╚██████╗██║  ██║
+                      ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
 
-                  """);
+                      """);
 
             int opcao;
 
             System.out.println("""
-                .-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.
-                |                                                                       |
-                |           Opções:                                                     |
-                |           Pressione 1 para verificar os dados na máquina              |
-                |           Pressione 2 para sair                                       |
-                !                                                                       !
-                `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
-                """);
+                    .-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.
+                    |                                                                       |
+                    |           Opções:                                                     |
+                    |           Pressione 1 para verificar os dados na máquina              |
+                    |           Pressione 2 para sair                                       |
+                    !                                                                       !
+                    `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
+                    """);
             while (true) {
                 opcao = input.nextInt();
 
-                if (opcao == 1){
+                if (opcao == 1) {
                     maquina.setDominio(maquinaCollector.getDominio());
                     maquina.setIp(maquinaCollector.getIp());
                     maquina.setSistemaOperacional(maquinaCollector.getSistemaOperacional());
@@ -90,16 +88,16 @@ public class Main {
                     especificacaoMaquina.setNomeCpu(cpuCollector.getNomeCpu());
                     especificacaoMaquina.setRamTotal(ramCollector.getMemoriaTotal());
 
-                    if (!mainModel.maquinaExists(maquina.getDominio())){
+                    if (!mainModel.maquinaExists(maquina.getDominio())) {
                         System.out.println("Máquina sem cadastrado! Escolha uma estação para essa máquina:");
 
                         List<Estacao> estacoesDisponiveis = estacaoModel.listaEstacoesDisponiveis();
                         int estacao;
                         System.out.println("Estações disponíveis:");
-                        for (int i = 0; i < estacoesDisponiveis.size() ; i++) {
+                        for (int i = 0; i < estacoesDisponiveis.size(); i++) {
                             System.out.println("""
-                              %d - %s
-                             """.formatted(i + 1, estacoesDisponiveis.get(i).getNome()));
+                                     %d - %s
+                                    """.formatted(i + 1, estacoesDisponiveis.get(i).getNome()));
                         }
                         estacao = input.nextInt();
 
@@ -135,7 +133,7 @@ public class Main {
 
                     Timer timer = new Timer();
 
-                    TimerTask tarefa = new TimerTask(){
+                    TimerTask tarefa = new TimerTask() {
                         Integer contagem = 0;
 
                         public void run() {
@@ -148,14 +146,14 @@ public class Main {
                             LocalDateTime dataHorario = LocalDateTime.now();
 
                             System.out.println("""
-                                Coletando... %d
-                                """.formatted(contagem));
+                                    Coletando... %d
+                                    """.formatted(contagem));
 
-                            DateTimeFormatter formatadorDataHora =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                            DateTimeFormatter formatadorDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                             System.out.println("""
-                        Registro %d
-                        Data e horario: %s
-                        """.formatted(contagem, formatadorDataHora.format(dataHorario)));
+                                    Registro %d
+                                    Data e horario: %s
+                                    """.formatted(contagem, formatadorDataHora.format(dataHorario)));
 
                             Integer idUltimoRegistroMySql = registroModel.inserirRegistroMySql(registro, finalEspecificacaoMaquinaMySql.getIdEspecificacaoMaquina());
                             Integer idUltimoRegistroSqlServer = registroModel.inserirDadosRegistroSqlServer(registro, finalEspecificacaoMaquinaSqlServer.getIdEspecificacaoMaquina());
@@ -174,5 +172,4 @@ public class Main {
         } catch (Exception e){
             System.out.println(e);
         }
-    }
-}
+    }}

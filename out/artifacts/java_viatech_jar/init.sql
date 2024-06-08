@@ -1,0 +1,86 @@
+
+CREATE TABLE empresa(
+idEmpresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+razaoSocial VARCHAR(245) NOT NULL,
+nomeFantasia VARCHAR(245) NOT NULL,
+CNPJ CHAR(14) NOT NULL UNIQUE
+);
+
+CREATE TABLE funcionario(
+idFuncionario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+urlFoto VARCHAR(800) NULL,
+nome VARCHAR(100) NOT NULL,
+cpf CHAR(11) NOT NULL UNIQUE,
+email VARCHAR(100) NOT NULL,
+senha VARCHAR(100) NOT NULL,
+cargo VARCHAR(100) NOT NULL,
+fkEmpresa INT NOT NULL,
+CONSTRAINT fkempresa FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
+);
+
+CREATE TABLE linha(
+idLinha INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+nome VARCHAR(100) NOT NULL,
+numero INT NOT NULL,
+fkEmpresa INT NOT NULL,
+CONSTRAINT empresaFk FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
+);
+
+CREATE TABLE estacao(
+idEstacao INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+nome VARCHAR(100) NOT NULL,
+fkLinha INT NOT NULL,
+CONSTRAINT fkLinha FOREIGN KEY (fkLinha) REFERENCES linha (idLinha) ON DELETE CASCADE
+);
+
+CREATE TABLE maquina (
+idMaquina INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+dominio VARCHAR(50) NOT NULL UNIQUE,
+ip VARCHAR(50) NOT NULL,
+sistemaOperacional VARCHAR(45) NOT NULL,
+fkEstacao INT NOT NULL,
+CONSTRAINT fkEstacao FOREIGN KEY (fkEstacao) REFERENCES estacao (idEstacao) ON DELETE CASCADE
+);
+
+CREATE TABLE especificacaoMaquina(
+idEspecificacaoMaquina INT PRIMARY KEY AUTO_INCREMENT,
+nomeCpu VARCHAR(255),
+armazenamentoTotal DOUBLE,
+ramTotal DOUBLE,
+fkMaquina INT NOT NULL,
+FOREIGN KEY (fkMaquina) REFERENCES maquina (idMaquina) ON DELETE CASCADE
+);
+
+CREATE TABLE registro (
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+dtHora DATETIME DEFAULT CURRENT_TIMESTAMP,
+cpuUtilizada DOUBLE,
+discoDisponivel DOUBLE,
+ramUtilizada DOUBLE,
+qtdDispositivosUsb INT,
+fkEspecificacaoMaquina INT NOT NULL,
+FOREIGN KEY (fkEspecificacaoMaquina) REFERENCES especificacaoMaquina (idEspecificacaoMaquina) ON DELETE CASCADE
+);
+
+CREATE TABLE historicoAlerta(
+idHistorico INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+dtHora DATETIME DEFAULT CURRENT_TIMESTAMP,
+tipo VARCHAR(100),
+componente VARCHAR(30),
+valorRegistrado DOUBLE,
+fkRegistro INT NOT NULL,
+FOREIGN KEY (fkRegistro) REFERENCES registro (idRegistro) ON DELETE CASCADE
+);
+
+CREATE TABLE metrica(
+idMetrica INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+cuidadoDisco DOUBLE,
+problemaDisco DOUBLE,
+cuidadoCpu DOUBLE,
+problemaCpu DOUBLE,
+cuidadoRam DOUBLE,
+problemaRam DOUBLE,
+maxUsb INT,
+fkLinha INT,
+FOREIGN KEY (fkLinha) REFERENCES linha (idLinha) ON DELETE CASCADE
+);
