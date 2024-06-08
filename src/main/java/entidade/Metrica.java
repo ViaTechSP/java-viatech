@@ -9,9 +9,9 @@ public class Metrica {
    Integer cuidadoRam;
    Integer problemaRam;
    Integer maxUsb;
-   Integer fkMaquina;
+   Integer fkLinha;
 
-    public Metrica(Integer idMetrica, Integer cuidadoDisco, Integer problemaDisco, Integer cuidadoCpu, Integer problemaCpu, Integer cuidadoRam, Integer problemaRam, Integer maxUsb, Integer fkMaquina) {
+    public Metrica(Integer idMetrica, Integer cuidadoDisco, Integer problemaDisco, Integer cuidadoCpu, Integer problemaCpu, Integer cuidadoRam, Integer problemaRam, Integer maxUsb, Integer fkLinha) {
         this.idMetrica = idMetrica;
         this.cuidadoDisco = cuidadoDisco;
         this.problemaDisco = problemaDisco;
@@ -20,7 +20,7 @@ public class Metrica {
         this.cuidadoRam = cuidadoRam;
         this.problemaRam = problemaRam;
         this.maxUsb = maxUsb;
-        this.fkMaquina = fkMaquina;
+        this.fkLinha = fkLinha;
     }
 
     public Metrica() {
@@ -90,12 +90,12 @@ public class Metrica {
         this.maxUsb = maxUsb;
     }
 
-    public Integer getFkMaquina() {
-        return fkMaquina;
+    public Integer getFkLinha() {
+        return fkLinha;
     }
 
-    public void setFkMaquina(Integer fkMaquina) {
-        this.fkMaquina = fkMaquina;
+    public void setFkLinha(Integer fkLinha) {
+        this.fkLinha = fkLinha;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Metrica {
                 ", cuidadoRam=" + cuidadoRam +
                 ", problemaRam=" + problemaRam +
                 ", maxUsb=" + maxUsb +
-                ", fkMaquina=" + fkMaquina +
+                ", fkMaquina=" + fkLinha +
                 '}';
     }
 }

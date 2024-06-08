@@ -1,30 +1,20 @@
 package alerta;
+import model.RegistroModel;
+import model.SlackModel;
+
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class SlackConfig {
-    private String token = "xoxb-7163001649796-7162312869991-47uQKXQq7zMrGnR17ueKdzdR";
+    RegistroModel registroModel = new RegistroModel();
     private String channel;
     private String message;
 
-    public String getToken() {
-        return token;
-    }
 
-    public String getChannel() {
-        return channel;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public void sendMessage(String message, String channel) throws Exception {
+            String token = registroModel.buscarTokenBot();
             String url = "https://slack.com/api/chat.postMessage";
 
             String jsonPayload = String.format(

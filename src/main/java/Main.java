@@ -36,6 +36,7 @@ public class Main {
         LoginMetodos usar = new LoginMetodos();
         boolean validacao;
 
+
         do{
             System.out.println("Digite seu email:");
             String email = input.next();
@@ -85,11 +86,8 @@ public class Main {
                     maquina.setIp(maquinaCollector.getIp());
                     maquina.setSistemaOperacional(maquinaCollector.getSistemaOperacional());
 
-                    especificacaoMaquina.setCapacidadeTotalArmazenamento(discoCollector.getTotalGigabytesDisco());
-                    especificacaoMaquina.setFrequenciaCpu(cpuCollector.getFrequencia());
+                    especificacaoMaquina.setArmazenamentoTotal(discoCollector.getTotalGigabytesDisco());
                     especificacaoMaquina.setNomeCpu(cpuCollector.getNomeCpu());
-                    especificacaoMaquina.setQtdCpuFisica(cpuCollector.getCpuFisica());
-                    especificacaoMaquina.setQtdCpuLogica(cpuCollector.getCpuLogica());
                     especificacaoMaquina.setRamTotal(ramCollector.getMemoriaTotal());
 
                     if (!mainModel.maquinaExists(maquina.getDominio())){
@@ -120,6 +118,7 @@ public class Main {
                     EspecificacaoMaquina especificacaoMaquinaSqlServer = new EspecificacaoMaquina(especificacaoMaquina, maquinaSqlServer.getIdMaquina());
 
                     if (!mainModel.especificacaoMaquinaExists(maquinaMySql.getIdMaquina(), maquinaSqlServer.getIdMaquina())){
+
                         especificacaoMaquinaModel.inserirDadosEspecificacaoMySql(especificacaoMaquinaMySql);
                         especificacaoMaquinaModel.inserirDadosEspecificacaoSqlServer(especificacaoMaquinaSqlServer);
 
@@ -141,10 +140,10 @@ public class Main {
 
                         public void run() {
 
-                            registro.setCpuPorcentagemUso(cpuCollector.getUsoCpu());
+                            registro.setCpuUtilizada(cpuCollector.getUsoCpu());
                             registro.setDiscoDisponivel(discoCollector.getDiscoDisponivel());
                             registro.setRamUtilizada(ramCollector.getMemoriaUtilizada());
-                            registro.setQtdDispositivosConectados(usbCollector.getQuantidadeUsbConectados());
+                            registro.setQtdDispositivosUsb(usbCollector.getQuantidadeUsbConectados());
                             contagem++;
                             LocalDateTime dataHorario = LocalDateTime.now();
 
@@ -158,11 +157,10 @@ public class Main {
                         Data e horario: %s
                         """.formatted(contagem, formatadorDataHora.format(dataHorario)));
 
-                            registroModel.inserirRegistroMySql(registro, finalEspecificacaoMaquinaMySql.getIdEspecificacaoMaquina());
-                            registroModel.inserirDadosRegistroSqlServer(registro, finalEspecificacaoMaquinaSqlServer.getIdEspecificacaoMaquina());
+                            Integer idUltimoRegistroMySql = registroModel.inserirRegistroMySql(registro, finalEspecificacaoMaquinaMySql.getIdEspecificacaoMaquina());
+                            Integer idUltimoRegistroSqlServer = registroModel.inserirDadosRegistroSqlServer(registro, finalEspecificacaoMaquinaSqlServer.getIdEspecificacaoMaquina());
 
-                            System.out.println("Registros inseridos!");
-//                                slackModel.verificarRegistro(registro, especificacaoMaquinaMySql);
+                            slackModel.verificarRegistro(registro, idUltimoRegistroMySql, idUltimoRegistroSqlServer, especificacaoMaquinaMySql);
                         }
                     };
                     timer.scheduleAtFixedRate(tarefa, 200, 5000L);
@@ -174,7 +172,7 @@ public class Main {
                 }
             }
         } catch (Exception e){
-            System.out.println("E-mail ou senha inválidos. Tente novamente.");
+            System.out.println(e);
         }
     }
 }

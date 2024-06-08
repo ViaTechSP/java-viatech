@@ -14,7 +14,7 @@ public class EstacaoModel {
 
     public List<Estacao> listaEstacoesDisponiveis (){
         BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        JdbcTemplate conn = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
 
         try {
             String query = "SELECT e.nome, e.idEstacao FROM estacao AS e " +

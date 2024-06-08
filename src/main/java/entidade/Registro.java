@@ -5,19 +5,19 @@ import java.time.LocalDateTime;
 public class Registro {
     private Integer idRegistro;
     private LocalDateTime dtHora;
-    private Double cpuPorcentagemUso;
+    private Double cpuUtilizada;
     private Double discoDisponivel;
     private Double ramUtilizada;
-    private Integer qtdDispositivosConectados;
+    private Integer qtdDispositivosUsb;
     private Integer fkEspecificacaoMaquina;
 
-    public Registro(Integer idRegistro, LocalDateTime dtHora, Double cpuPorcentagemUso, Double discoDisponivel, Double ramUtilizada, Integer qtdDispositivosConectados, Integer fkEspecificacaoMaquina) {
+    public Registro(Integer idRegistro, LocalDateTime dtHora, Double cpuPorcentagemUso, Double discoDisponivel, Double ramUtilizada, Integer qtdDispositivosUsb, Integer fkEspecificacaoMaquina) {
         this.idRegistro = idRegistro;
         this.dtHora = dtHora;
-        this.cpuPorcentagemUso = cpuPorcentagemUso;
+        this.cpuUtilizada = cpuPorcentagemUso;
         this.discoDisponivel = discoDisponivel;
         this.ramUtilizada = ramUtilizada;
-        this.qtdDispositivosConectados = qtdDispositivosConectados;
+        this.qtdDispositivosUsb = qtdDispositivosUsb;
         this.fkEspecificacaoMaquina = fkEspecificacaoMaquina;
     }
 
@@ -40,12 +40,12 @@ public class Registro {
         this.dtHora = dtHora;
     }
 
-    public Double getCpuPorcentagemUso() {
-        return cpuPorcentagemUso;
+    public Double getCpuUtilizada() {
+        return cpuUtilizada;
     }
 
-    public void setCpuPorcentagemUso(Double cpuPorcentagemUso) {
-        this.cpuPorcentagemUso = cpuPorcentagemUso;
+    public void setCpuUtilizada(Double cpuUtilizada) {
+        this.cpuUtilizada = cpuUtilizada;
     }
 
     public Double getDiscoDisponivel() {
@@ -64,12 +64,12 @@ public class Registro {
         this.ramUtilizada = ramUtilizada;
     }
 
-    public Integer getQtdDispositivosConectados() {
-        return qtdDispositivosConectados;
+    public Integer getQtdDispositivosUsb() {
+        return qtdDispositivosUsb;
     }
 
-    public void setQtdDispositivosConectados(Integer qtdDispositivosConectados) {
-        this.qtdDispositivosConectados = qtdDispositivosConectados;
+    public void setQtdDispositivosUsb(Integer qtdDispositivosUsb) {
+        this.qtdDispositivosUsb = qtdDispositivosUsb;
     }
 
     public Integer getFkEspecificacaoMaquina() {
@@ -85,10 +85,10 @@ public class Registro {
         return "Registro{" +
                 "idRegistro=" + idRegistro +
                 ", dtHora=" + dtHora +
-                ", cpuPorcentagemUso=" + cpuPorcentagemUso +
+                ", cpuUtilizada=" + cpuUtilizada +
                 ", discoDisponivel=" + discoDisponivel +
                 ", ramUtilizada=" + ramUtilizada +
-                ", qtdDispositivosConectados=" + qtdDispositivosConectados +
+                ", qtdDispositivosUsb=" + qtdDispositivosUsb +
                 ", fkEspecificacaoMaquina=" + fkEspecificacaoMaquina +
                 '}';
     }

@@ -10,8 +10,8 @@ public class EspecificacaoMaquinaModel {
         BancoConexao bancoConexao = new BancoConexao();
         JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
 
-        connMySql.update("INSERT INTO especificacaoMaquina VALUES (null, ?, ?, ?, ?, ?)", especificacaoMaquina.getNomeCpu(), especificacaoMaquina.getFrequenciaCpu(),
-                especificacaoMaquina.getCapacidadeTotalArmazenamento(),
+        connMySql.update("INSERT INTO especificacaoMaquina VALUES (null, ?, ?, ?, ?)", especificacaoMaquina.getNomeCpu(),
+                especificacaoMaquina.getArmazenamentoTotal(),
                 especificacaoMaquina.getRamTotal(), especificacaoMaquina.getFkMaquina());
     }
 
@@ -19,10 +19,9 @@ public class EspecificacaoMaquinaModel {
         BancoConexao bancoConexao = new BancoConexao();
         JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
 
-        connSqlServer.update("INSERT INTO especificacaoMaquina (nomeCpu, frequenciaCpu, capacidadeTotalArmazenamento, ramTotal, fkMaquina) VALUES (?, ?, ?, ?, ?)",
+        connSqlServer.update("INSERT INTO especificacaoMaquina (nomeCpu, armazenamentoTotal, ramTotal, fkMaquina) VALUES (?, ?, ?, ?)",
                 especificacaoMaquina.getNomeCpu(),
-                especificacaoMaquina.getFrequenciaCpu(),
-                especificacaoMaquina.getCapacidadeTotalArmazenamento(),
+                especificacaoMaquina.getArmazenamentoTotal(),
                 especificacaoMaquina.getRamTotal(),
                 especificacaoMaquina.getFkMaquina());
     }

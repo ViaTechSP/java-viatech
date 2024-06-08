@@ -1,5 +1,7 @@
 package model;
 
+import entidade.EspecificacaoMaquina;
+
 public class MainModel {
 
     MaquinaModel maquinaModel = new MaquinaModel();
@@ -11,7 +13,6 @@ public class MainModel {
     }
 
     public Boolean especificacaoMaquinaExists(Integer fkMaquinaMySql, Integer fkMaquinaSqlServer){
-
         return especificacaoMaquinaModel.verificarExistenciaMaquinaMySql(fkMaquinaMySql) != null
                 && especificacaoMaquinaModel.verificarExistenciaMaquinaSqlServer(fkMaquinaSqlServer) != null;
     }

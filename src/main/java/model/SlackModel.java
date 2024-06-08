@@ -3,31 +3,32 @@ package model;
 import alerta.SlackConfig;
 import banco.BancoConexao;
 import entidade.EspecificacaoMaquina;
-import entidade.HistoricoAlerta;
 import entidade.Metrica;
 import entidade.Registro;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.io.IOException;
-
 public class SlackModel {
     BancoConexao bancoConexao = new BancoConexao();
-    JdbcTemplate conn = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+    JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
     SlackConfig slackConfig = new SlackConfig();
     HistoricoAlertaModel historicoAlertaModel = new HistoricoAlertaModel();
 
-    public void verificarRegistro(Registro registro, EspecificacaoMaquina especificacaoMaquina){
-        Metrica metrica = buscarMetrica(registro.getFkEspecificacaoMaquina());
+    public void verificarRegistro(Registro registro, Integer idUltimoRegistroMySql, Integer idUltimoRegistroSqlServer, EspecificacaoMaquina especificacaoMaquina){
+        Metrica metrica = buscarMetrica(especificacaoMaquina.getFkMaquina());
 
-        verificarCpu(registro, registro.getCpuPorcentagemUso(), metrica);
-        verificarRam(registro, metrica, especificacaoMaquina);
-        verificarDisco(registro,registro.getDiscoDisponivel(), metrica);
+        verificarCpu(idUltimoRegistroMySql, idUltimoRegistroSqlServer, registro.getCpuUtilizada(), metrica);
+        verificarRam(idUltimoRegistroMySql, idUltimoRegistroSqlServer, registro.getRamUtilizada(), metrica, especificacaoMaquina);
+        verificarDisco(idUltimoRegistroMySql, idUltimoRegistroSqlServer, registro.getDiscoDisponivel(), metrica);
+        verificarUsb(idUltimoRegistroMySql, idUltimoRegistroSqlServer, registro.getQtdDispositivosUsb(), metrica);
     }
 
     public Metrica buscarMetrica(Integer fkMaquina) {
-        String query = "SELECT * FROM metrica WHERE fkMaquina = ?";
-        return conn.queryForObject(query, new BeanPropertyRowMapper<>(Metrica.class), fkMaquina);
+        String query = "SELECT m.* FROM metrica as m\n" +
+                "JOIN linha AS l on l.idLinha = m.fkLinha \n" +
+                "JOIN estacao AS e on e.fkLinha = l.idLinha\n" +
+                "JOIN maquina AS maq on e.idEstacao = maq.fkEstacao WHERE idMaquina = ?;";
+        return connSqlServer.queryForObject(query, new BeanPropertyRowMapper<>(Metrica.class), fkMaquina);
     }
 
     private void enviarMensagem(String mensagem, String channel){
@@ -38,43 +39,58 @@ public class SlackModel {
         }
     }
 
-    private void verificarCpu(Registro registro, Double porcentagemDeUsoDaCpu, Metrica metrica){
+    private void verificarCpu(Integer idUltimoRegistroMySql, Integer idUltimoRegistroSqlServer, Double porcentagemDeUsoDaCpu, Metrica metrica){
 
-        if (porcentagemDeUsoDaCpu > metrica.getCuidadoCpu()){
-            enviarMensagem("CUIDADO com o uso da CPU!", "#cpu");
-            historicoAlertaModel.inserirHistoricoAlerta("cuidado", "cpu", porcentagemDeUsoDaCpu, registro.getIdRegistro());
-        } else if (porcentagemDeUsoDaCpu > metrica.getProblemaCpu()){
+        if (porcentagemDeUsoDaCpu >= metrica.getProblemaCpu()){
             enviarMensagem("PROBLEMA no uso da CPU!", "#cpu");
-            historicoAlertaModel.inserirHistoricoAlerta("problema", "cpu", porcentagemDeUsoDaCpu, registro.getIdRegistro());
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("problema", "cpu", porcentagemDeUsoDaCpu, idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("problema", "cpu", porcentagemDeUsoDaCpu, idUltimoRegistroSqlServer);
+        } else if (porcentagemDeUsoDaCpu >= metrica.getCuidadoCpu()){
+            enviarMensagem("CUIDADO com o uso da CPU!", "#cpu");
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("cuidado", "cpu", porcentagemDeUsoDaCpu, idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("cuidado", "cpu", porcentagemDeUsoDaCpu, idUltimoRegistroSqlServer);
         }
     }
 
-    private void verificarRam(Registro registro, Metrica metrica, EspecificacaoMaquina especificacaoMaquina){
-        Double porcentagemRam = registro.getRamUtilizada() / especificacaoMaquina.getRamTotal() * 100;
+    private void verificarRam(Integer idUltimoRegistroMySql, Integer idUltimoRegistroSqlServer, Double ramUtilizada, Metrica metrica, EspecificacaoMaquina especificacaoMaquina){
+        Double porcentagemRam = ramUtilizada / especificacaoMaquina.getRamTotal() * 100;
 
-        if (porcentagemRam > metrica.getCuidadoRam()){
-            enviarMensagem("CUIDADO com o uso da RAM!", "#ram");
-            historicoAlertaModel.inserirHistoricoAlerta("cuidado", "ram", porcentagemRam, registro.getIdRegistro());
-        } else if (porcentagemRam > metrica.getProblemaRam()){
+        if (porcentagemRam >= metrica.getProblemaRam()){
             enviarMensagem("PROBLEMA no uso da RAM!", "#ram");
-            historicoAlertaModel.inserirHistoricoAlerta("problema", "ram", porcentagemRam, registro.getIdRegistro());
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("problema", "ram", porcentagemRam, idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("problema", "ram", porcentagemRam, idUltimoRegistroSqlServer);
+        } else if (porcentagemRam >= metrica.getCuidadoRam()){
+            enviarMensagem("CUIDADO com o uso da RAM!", "#ram");
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("cuidado", "ram", porcentagemRam, idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("cuidado", "ram", porcentagemRam, idUltimoRegistroSqlServer);
         }
     }
 
-    private void verificarDisco(Registro registro, Double discoDisponivel, Metrica metrica){
-        if (discoDisponivel < metrica.getCuidadoDisco()){
-            enviarMensagem("CUIDADO com o espaço disponível!", "#disco");
-            historicoAlertaModel.inserirHistoricoAlerta("cuidado", "disco", discoDisponivel, registro.getIdRegistro());
-        } else if (discoDisponivel < metrica.getProblemaDisco()){
-            historicoAlertaModel.inserirHistoricoAlerta("problema", "disco", discoDisponivel, registro.getIdRegistro());
+    private void verificarDisco(Integer idUltimoRegistroMySql, Integer idUltimoRegistroSqlServer, Double discoDisponivel, Metrica metrica){
+        if (discoDisponivel <= metrica.getProblemaDisco()){
             enviarMensagem("PROBLEMA no espaço disponível!", "#disco");
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("problema", "disco", discoDisponivel, idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("problema", "disco", discoDisponivel, idUltimoRegistroSqlServer);
+        } else if (discoDisponivel <= metrica.getCuidadoDisco()){
+            enviarMensagem("CUIDADO com o espaço disponível!", "#disco");
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("cuidado", "disco", discoDisponivel, idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("cuidado", "disco", discoDisponivel, idUltimoRegistroSqlServer);
+
         }
     }
 
-    private void verificarUsb(Registro registro, Integer qtdUsb, Metrica metrica){
-        if (qtdUsb >= metrica.getMaxUsb()){
+    private void verificarUsb(Integer idUltimoRegistroMySql, Integer idUltimoRegistroSqlServer, Integer qtdUsb, Metrica metrica){
+        if (qtdUsb > metrica.getMaxUsb()){
             enviarMensagem("Limite de dispositivos USB excedido!", "#usb");
-            historicoAlertaModel.inserirHistoricoAlerta("problema", "usb", Double.valueOf(qtdUsb), registro.getIdRegistro());
+
+            historicoAlertaModel.inserirHistoricoAlertaMySql("problema", "usb", Double.valueOf(qtdUsb), idUltimoRegistroMySql);
+            historicoAlertaModel.inserirHistoricoAlertaSqlServer("problema", "usb", Double.valueOf(qtdUsb), idUltimoRegistroSqlServer);
         }
     }
 }
