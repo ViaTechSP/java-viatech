@@ -16,8 +16,8 @@ public class BancoConexao {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/viatech");
-        dataSource.setUsername("root");
-        dataSource.setPassword("urubu100");
+        dataSource.setUsername("usuario_viatech");
+        dataSource.setPassword("viatech");
         return dataSource;
     }
 
@@ -26,7 +26,7 @@ public class BancoConexao {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         dataSource.setUrl("jdbc:sqlserver://52.72.244.178;databaseName=viatech");
-        dataSource.setUsername("eduardo");
+        dataSource.setUsername("viatech");
         dataSource.setPassword("Urubu100");
         return dataSource;
     }

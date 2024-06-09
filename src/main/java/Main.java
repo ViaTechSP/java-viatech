@@ -35,7 +35,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         LoginMetodos usar = new LoginMetodos();
         boolean validacao;
-
+        System.out.println();
         do{
             System.out.println("Digite seu email:");
             String email = input.next();
@@ -140,7 +140,7 @@ public class Main {
 
                             registro.setCpuUtilizada(cpuCollector.getUsoCpu());
                             registro.setDiscoDisponivel(discoCollector.getDiscoDisponivel());
-                            registro.setRamUtilizada(ramCollector.getMemoriaUtilizada());
+                            registro.setRamUtilizada(ramCollector.getMemoriaUtilizada() / ramCollector.getMemoriaTotal() * 100);
                             registro.setQtdDispositivosUsb(usbCollector.getQuantidadeUsbConectados());
                             contagem++;
                             LocalDateTime dataHorario = LocalDateTime.now();
