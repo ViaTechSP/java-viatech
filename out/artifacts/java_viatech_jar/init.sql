@@ -1,7 +1,7 @@
 USE viatech;
 
-CREATE USER 'usuario_viatech'@'localhost' IDENTIFIED BY 'viatech';
-GRANT ALL PRIVILEGES ON viatech.* TO 'usuario_viatech'@'localhost';
+CREATE USER 'usuario_viatech'@'%' IDENTIFIED BY 'viatech';
+GRANT ALL PRIVILEGES ON viatech.* TO 'usuario_viatech'@'%';
 FLUSH PRiVILEGES;
 
 CREATE TABLE maquina (
