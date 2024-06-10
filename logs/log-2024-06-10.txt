@@ -1,0 +1,100 @@
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:09:36.881
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:09:40.905
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:09:43.710
+Mensagem: Erro ao validar senha: senha incorreta
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:09:55.824
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:16:05.745
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:16:10.931
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:19:05.088
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:19:07.881
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:36:00.581
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 10/06/2024 19:36:05.063
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
