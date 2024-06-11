@@ -1,6 +1,7 @@
 package model;
 
-import banco.BancoConexao;
+import banco.MysqlBancoConexao;
+import banco.SqlServerBancoConexao;
 import entidade.Maquina;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,8 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class MaquinaModel {
 
     public Maquina exibirMaquinaMySql(String dominio){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        MysqlBancoConexao bancoConexao = new MysqlBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.getJdbcTemplate();
 
         try{
             String query = "SELECT * FROM maquina WHERE dominio = ?";
@@ -19,16 +20,16 @@ public class MaquinaModel {
         }
     }
     public void inserirMaquinaMySql(Maquina maquina, Integer idEstacao){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        MysqlBancoConexao bancoConexao = new MysqlBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.getJdbcTemplate();
 
         String query = "INSERT INTO maquina VALUES (null, ?, ?, ?, ?)";
         connMySql.update(query, maquina.getDominio(), maquina.getIp(), maquina.getSistemaOperacional(), idEstacao);
     }
 
     public Maquina exibirMaquinaSqlServer(String dominio){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         try{
             String query = "SELECT * FROM maquina WHERE dominio = ?";
@@ -39,8 +40,8 @@ public class MaquinaModel {
     }
 
     public void inserirMaquinaSqlServer(Maquina maquina, Integer idEstacao){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         String query = "INSERT INTO maquina (dominio, ip, sistemaOperacional, fkEstacao) VALUES (?, ?, ?, ?)";
         connSqlServer.update(query, maquina.getDominio(), maquina.getIp(), maquina.getSistemaOperacional(), idEstacao);

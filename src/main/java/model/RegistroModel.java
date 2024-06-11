@@ -1,6 +1,7 @@
 package model;
 
-import banco.BancoConexao;
+import banco.MysqlBancoConexao;
+import banco.SqlServerBancoConexao;
 import entidade.Registro;
 import entidade.Slack;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -15,11 +16,11 @@ import java.util.Objects;
 
 public class RegistroModel {
     public int inserirRegistroMySql(Registro registro, Integer fkEspecificacaoMaquina) {
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        MysqlBancoConexao bancoConexao = new MysqlBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.getJdbcTemplate();
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        conn.update(connection -> {
+        connMySql.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(
                     "INSERT INTO registro VALUES (null, default, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
@@ -36,8 +37,8 @@ public class RegistroModel {
 
 
     public int inserirDadosRegistroSqlServer(Registro registro, Integer fkEspecificacaoMaquina) {
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         connSqlServer.update("INSERT INTO registro (dtHora, cpuUtilizada, discoDisponivel, ramUtilizada, qtdDispositivosUsb, fkEspecificacaoMaquina) " +
                         "VALUES (default, ?, ?, ?, ?, ?)", registro.getCpuUtilizada(), registro.getDiscoDisponivel(),
@@ -51,8 +52,8 @@ public class RegistroModel {
 
 
     public String buscarTokenBot(){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         String query = "SELECT slack.token FROM slack";
         return connSqlServer.queryForObject(query, new BeanPropertyRowMapper<>(Slack.class)).getToken();

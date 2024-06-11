@@ -1,14 +1,15 @@
 package model;
 
-import banco.BancoConexao;
+import banco.MysqlBancoConexao;
+import banco.SqlServerBancoConexao;
 import entidade.EspecificacaoMaquina;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class EspecificacaoMaquinaModel {
     public void inserirDadosEspecificacaoMySql(EspecificacaoMaquina especificacaoMaquina) {
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        MysqlBancoConexao bancoConexao = new MysqlBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.getJdbcTemplate();
 
         connMySql.update("INSERT INTO especificacaoMaquina VALUES (null, ?, ?, ?, ?)", especificacaoMaquina.getNomeCpu(),
                 especificacaoMaquina.getArmazenamentoTotal(),
@@ -16,8 +17,8 @@ public class EspecificacaoMaquinaModel {
     }
 
     public void inserirDadosEspecificacaoSqlServer(EspecificacaoMaquina especificacaoMaquina) {
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         connSqlServer.update("INSERT INTO especificacaoMaquina (nomeCpu, armazenamentoTotal, ramTotal, fkMaquina) VALUES (?, ?, ?, ?)",
                 especificacaoMaquina.getNomeCpu(),
@@ -27,8 +28,8 @@ public class EspecificacaoMaquinaModel {
     }
 
     public EspecificacaoMaquina verificarExistenciaMaquinaMySql(Integer fkMaquina){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connMySql = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        MysqlBancoConexao bancoConexao = new MysqlBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.getJdbcTemplate();
 
         try{
             String query = "SELECT * FROM especificacaoMaquina WHERE fkMaquina = ?";
@@ -39,8 +40,8 @@ public class EspecificacaoMaquinaModel {
     }
 
     public EspecificacaoMaquina verificarExistenciaMaquinaSqlServer(Integer fkMaquina){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         try{
             String query = "SELECT * FROM especificacaoMaquina WHERE fkMaquina = ?";

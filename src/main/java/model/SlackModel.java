@@ -1,7 +1,7 @@
 package model;
 
 import alerta.SlackConfig;
-import banco.BancoConexao;
+import banco.SqlServerBancoConexao;
 import entidade.EspecificacaoMaquina;
 import entidade.Metrica;
 import entidade.Registro;
@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class SlackModel {
-    BancoConexao bancoConexao = new BancoConexao();
-    JdbcTemplate connSqlServer = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+    SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+    JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
     SlackConfig slackConfig = new SlackConfig();
     HistoricoAlertaModel historicoAlertaModel = new HistoricoAlertaModel();
 

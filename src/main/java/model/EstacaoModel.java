@@ -1,6 +1,6 @@
 package model;
 
-import banco.BancoConexao;
+import banco.SqlServerBancoConexao;
 import entidade.Estacao;
 import entidade.Maquina;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -13,9 +13,8 @@ import java.util.List;
 public class EstacaoModel {
 
     public List<Estacao> listaEstacoesDisponiveis (){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
-
+        SqlServerBancoConexao sqlServerBancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate conn = sqlServerBancoConexao.getJdbcTemplate();
         try {
             String query = "SELECT e.nome, e.idEstacao FROM estacao AS e " +
                     "LEFT JOIN maquina AS m ON m.fkEstacao = e.idEstacao " +

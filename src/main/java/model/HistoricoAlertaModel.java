@@ -1,22 +1,23 @@
 package model;
 
-import banco.BancoConexao;
+import banco.MysqlBancoConexao;
+import banco.SqlServerBancoConexao;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class HistoricoAlertaModel {
     public void inserirHistoricoAlertaMySql(String tipo, String componente, Double valor, Integer fkRegistro){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.mysqlJdbcTemplate(bancoConexao.mysqlDataSource());
+        MysqlBancoConexao bancoConexao = new MysqlBancoConexao();
+        JdbcTemplate connMySql = bancoConexao.getJdbcTemplate();
 
         String query = "INSERT into historicoAlerta VALUES (null, default, ?, ?, ?, ?)";
-        conn.update(query, tipo, componente, valor, fkRegistro);
+        connMySql.update(query, tipo, componente, valor, fkRegistro);
     }
 
     public void inserirHistoricoAlertaSqlServer(String tipo, String componente, Double valor, Integer fkRegistro){
-        BancoConexao bancoConexao = new BancoConexao();
-        JdbcTemplate conn = bancoConexao.sqlServerJdbcTemplate(bancoConexao.sqlServerDataSource());
+        SqlServerBancoConexao bancoConexao = new SqlServerBancoConexao();
+        JdbcTemplate connSqlServer = bancoConexao.getJdbcTemplate();
 
         String query = "INSERT into historicoAlerta (tipo, componente, valorRegistrado, fkRegistro) VALUES (?, ?, ?, ?)";
-        conn.update(query, tipo, componente, valor, fkRegistro);
+        connSqlServer.update(query, tipo, componente, valor, fkRegistro);
     }
 }
