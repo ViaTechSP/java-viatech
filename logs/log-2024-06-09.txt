@@ -1,0 +1,820 @@
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:12:44.589
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:12:51.375
+Mensagem: Erro ao validar senha: formato inválido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:12:57.704
+Mensagem: Erro ao validar senha: formato inválido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:13:00.586
+Mensagem: Erro ao validar senha: formato inválido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:13:01.745
+Mensagem: Erro ao validar senha: formato inválido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:30:32.981
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:30:42.885
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:33:53.676
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:34:00.510
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:23.786
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:28.230
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:29.963
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.059
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.145
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.238
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.325
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.397
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.490
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.588
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.661
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.751
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.836
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:30.911
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.049
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.128
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.198
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.286
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.372
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.445
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.553
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.637
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.706
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.809
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.897
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:31.978
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.082
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.166
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.237
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.314
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.398
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.471
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.564
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.659
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.735
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.851
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:32.934
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.015
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.106
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.189
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.259
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.343
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.428
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.500
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.608
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.689
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.758
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.841
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:33.935
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.013
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.121
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.238
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.313
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.418
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.492
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.564
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.647
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.741
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.812
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.891
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:34.977
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:35.053
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:35.159
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:35.259
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:35.333
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:35.428
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:56:35.508
+Mensagem: Erro ao validar email: e-mail invalido
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:57:12.684
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:57:15.901
+Mensagem: Erro ao validar senha: senha incorreta
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:57:30.384
+Mensagem: Erro ao validar senha: senha incorreta
+logLevel: ERROR
+statusCode: 400
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 21:57:33.364
+Mensagem: Validação de senha realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 22:41:56.959
+Mensagem: Validação de email realizada com sucesso
+logLevel: INFO
+statusCode: 200
+}
+
+{
+Sistema Operacional: Windows
+Arquitetura: 64
+hostname: NT-FMAGALHAES
+Data: 09/06/2024 22:42:00.678
+Mensagem: Erro ao validar senha: senha incorreta
+logLevel: ERROR
+statusCode: 400
+}
+
