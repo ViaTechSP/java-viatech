@@ -55,7 +55,7 @@ public class SlackModel {
     }
 
     private void verificarRam(Integer idUltimoRegistroMySql, Integer idUltimoRegistroSqlServer, Double ramUtilizada, Metrica metrica, EspecificacaoMaquina especificacaoMaquina){
-        Double porcentagemRam = ramUtilizada / especificacaoMaquina.getRamTotal() * 100;
+        Double porcentagemRam = ramUtilizada;
 
         if (porcentagemRam >= metrica.getProblemaRam()){
             enviarMensagem("PROBLEMA no uso da RAM!", "#ram");

@@ -35,7 +35,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         LoginMetodos usar = new LoginMetodos();
         boolean validacao;
-        System.out.println();
+
         do{
             System.out.println("Digite seu email:");
             String email = input.next();
