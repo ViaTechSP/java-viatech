@@ -12,7 +12,7 @@ public class SqlServerBancoConexao extends BancoConexaoBase {
     @Override
     @Bean(name = "sqlServerDataSource")
     public DataSource getDataSource() {
-        return criarDataSource("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://52.72.244.178;databaseName=viatech", "viatech", "Urubu100");
+        return criarDataSource("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://34.197.44.86;databaseName=viatech", "viatech", "urubu100");
     }
 
     @Override
